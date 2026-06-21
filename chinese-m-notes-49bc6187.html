@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一个关于世界杯的故事 | 中文叙事页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f2f0;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+            color: #2d2c2a;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        /* Hero 开场区 */
+        .hero {
+            margin-bottom: 2.8rem;
+            text-align: left;
+            padding: 0 0.2rem;
+        }
+
+        .hero .prelude {
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+            color: #63615c;
+            border-left: 4px solid #b8a99a;
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 350;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            color: #2a2826;
+            margin-top: 0.2rem;
+        }
+
+        /* 卡片体系 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2dfda;
+            border-radius: 20px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .card p {
+            margin-bottom: 1.2rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 承接叙述段 */
+        .story-block {
+            font-size: 1.05rem;
+        }
+
+        .story-block .highlight {
+            background: #f0ede9;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            color: #3f3b36;
+            font-style: normal;
+        }
+
+        /* 特点列表——温和风格 */
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.6rem 0 0.8rem 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            flex: 1 1 180px;
+            background: #faf9f7;
+            border: 1px solid #e7e3dc;
+            border-radius: 40px;
+            padding: 0.9rem 1.4rem;
+            font-size: 0.95rem;
+            color: #3b3834;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.7), 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .feature-list li span {
+            font-weight: 430;
+            display: inline-block;
+            margin-right: 0.3rem;
+            color: #4f4a44;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            background: #ffffff;
+            border: 1px solid #e2dfda;
+            border-radius: 20px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+            padding: 2rem 2.2rem;
+            margin-top: 1.2rem;
+            font-style: normal;
+        }
+
+        .closing p {
+            margin-bottom: 0.8rem;
+        }
+
+        .closing cite {
+            display: block;
+            margin-top: 1.2rem;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #7c7770;
+            letter-spacing: 0.02em;
+        }
+
+        /* 链接自然融入 */
+        a {
+            color: #826e5c;
+            text-decoration: none;
+            border-bottom: 1px solid #d6cdc2;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 400;
+        }
+
+        a:hover {
+            color: #4f3f32;
+            border-bottom-color: #9a897b;
+        }
+
+        /* 脚注 / 提示摘要 */
+        .faq-note {
+            background: transparent;
+            border-top: 1px dashed #d6d0c8;
+            padding: 1.8rem 0 0.2rem 0;
+            margin-top: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-note .item {
+            color: #4e4a44;
+            flex: 1 1 200px;
+        }
+
+        .faq-note .item strong {
+            font-weight: 440;
+            color: #3d3832;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card, .closing {
+                padding: 1.5rem 1.2rem;
+                border-radius: 18px;
+            }
+
+            .feature-list li {
+                flex: 1 1 100%;
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .faq-note {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 开场短句 -->
+        <div class="hero">
+            <div class="prelude">一个关于世界杯的故事，从一次安静的浏览开始。</div>
+            <h1>世界杯 · 中文叙事</h1>
+        </div>
+
+        <!-- 承接段落：站点介绍与可信说明 -->
+        <div class="card story-block">
+            <p>
+                如果你对<a href="https://chinese-m-worldcup.com">世界杯</a>这三个字怀有一种朴素的好奇——
+                它并不总是喧闹的赛事集锦，也不只是奖杯与纪录。在这个中文站点里，内容围绕着「世界杯」这一概念展开，
+                但更多是以一种沉淀的、可信赖的方式去呈现。没有浮夸的标题，每一页都经过审慎组织，目的只是让浏览者获得清晰的信息。
+            </p>
+            <p>
+                站点的叙述风格偏于温和，不追逐短时流量，也不堆砌重复数据。它更像一间安静的阅览室，
+                你可以在里面慢慢了解世界杯的脉络、背景以及那些被忽略的细节。所有内容均基于公开资料与可查证的信息，
+                力求克制与真实——这一点，或许正是它与其他资讯站不同的地方。
+            </p>
+            <p>
+                无论你是偶然路过，还是特意前来，这里都提供一种不过载的阅读体验。
+            </p>
+        </div>
+
+        <!-- 特点列表：温和列举 -->
+        <div class="card">
+            <p style="font-weight: 420; color: #3f3b36; margin-bottom: 0.8rem;">一些你可以期待的小特点</p>
+            <ul class="feature-list">
+                <li><span>📄</span> 内容节奏舒缓，段落分明</li>
+                <li><span>🔍</span> 信息注明出处，不渲染情绪</li>
+                <li><span>🌿</span> 界面干净，灰色背景搭配柔和卡片</li>
+                <li><span>🧩</span> 结构灵活，适合慢慢翻阅</li>
+                <li><span>📌</span> 每个页面独立成篇，主题清晰</li>
+            </ul>
+        </div>
+
+        <!-- 场景提示 + FAQ 摘要风格 -->
+        <div class="card">
+            <p style="margin-bottom: 1rem; font-weight: 410; color: #3b3834;">一些你可能想问的</p>
+            <div class="faq-note">
+                <div class="item">
+                    <strong>这个站点是关于什么的？</strong>
+                    一个专注于介绍<a href="https://chinese-m-worldcup.com">世界杯</a>相关背景与知识的中文页面集合。
+                </div>
+                <div class="item">
+                    <strong>内容可信吗？</strong>
+                    所有信息都来自可查的公开来源，不编造数据，也不做主观夸张。
+                </div>
+                <div class="item">
+                    <strong>适合什么场景阅读？</strong>
+                    睡前、通勤、或是想暂时远离信息轰炸的时候——页面节奏轻缓，不制造焦虑。
+                </div>
+            </div>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="closing">
+            <p>
+                如果你愿意，可以从<a href="https://chinese-m-worldcup.com">世界杯</a>这个简单的入口开始，
+                慢慢看下去。不需要一次读完，也不需要记住什么。就像翻开一本旧书，随时可以合上，也随时可以再打开。
+            </p>
+            <p>
+                毕竟，有些故事适合慢慢讲，有些信息适合静静看。
+            </p>
+            <cite>—— 一个安静的索引 · 2025</cite>
+        </div>
+    </div>
+</body>
+</html>
