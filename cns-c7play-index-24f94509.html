@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杂志专题 · 再访与持续关注</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
+            background: #f5f1ec;
+            color: #2c2b2a;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 — 杂志横幅 */
+        .hero {
+            background: #1d1c1a;
+            color: #ede9e2;
+            padding: 5.5rem 1.8rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle at 30% 30%, #bbaa8a22, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at 70% 40%, #c7b59e33, transparent 65%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #c8bca8;
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            font-weight: 300;
+            border-top: 1px solid #3f3b35;
+            padding-top: 1.2rem;
+            display: inline-block;
+        }
+
+        /* 浅色正文区 — 三段自然介绍 + 杂志卡 */
+        .content-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3.5rem 1.8rem 3.2rem;
+        }
+
+        .intro-block {
+            margin-bottom: 3rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.6rem;
+            font-size: 1.02rem;
+            text-align: justify;
+        }
+
+        .intro-block p:first-of-type::first-letter {
+            font-size: 2.6rem;
+            font-weight: 500;
+            float: left;
+            margin-right: 0.3rem;
+            margin-top: 0.1rem;
+            color: #8b7b64;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .accent-link {
+            color: #8a6f4b;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
+            text-decoration-thickness: 0.07em;
+            transition: all 0.2s;
+            font-weight: 450;
+        }
+
+        .accent-link:hover {
+            color: #5f4b32;
+            text-decoration-color: #5f4b32;
+            background: #e5dcd1;
+            padding: 0.05rem 0.1rem;
+            border-radius: 2px;
+        }
+
+        /* 特点 / 轻卡片 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.2rem;
+            margin: 2.8rem 0 2.2rem;
+            padding: 1.8rem 0 0.8rem;
+            border-top: 1px dashed #d6cdbf;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            min-width: 140px;
+        }
+
+        .feature-item .num {
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #9b8b75;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .feature-item h3 {
+            font-weight: 450;
+            font-size: 1.1rem;
+            margin-bottom: 0.35rem;
+            color: #3e352a;
+        }
+
+        .feature-item p {
+            font-size: 0.93rem;
+            color: #5a5248;
+            line-height: 1.6;
+        }
+
+        /* 友好的FAQ摘要 */
+        .faq-mini {
+            background: #ece5db;
+            border-radius: 18px;
+            padding: 1.6rem 2rem 2rem;
+            margin: 2.8rem 0 2.5rem;
+        }
+
+        .faq-mini h4 {
+            font-weight: 450;
+            font-size: 1rem;
+            margin-bottom: 0.9rem;
+            color: #3f362b;
+            letter-spacing: 0.02em;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.7rem;
+            border-bottom: 1px solid #d3c7b7;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 400;
+            color: #4d4236;
+            padding: 0.25rem 0;
+            transition: 0.15s;
+            list-style: '▸  ';
+        }
+
+        .faq-mini details[open] summary {
+            color: #6a543b;
+            list-style: '▾  ';
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini .answer {
+            margin: 0.5rem 0 0.2rem 1.2rem;
+            font-size: 0.95rem;
+            color: #4f473d;
+            padding-right: 0.8rem;
+        }
+
+        /* 页尾访问提示 */
+        .footer-visit {
+            margin-top: 3rem;
+            padding: 2rem 1.5rem 2.4rem;
+            background: #e8dfd3;
+            border-radius: 30px 30px 0 0;
+            text-align: center;
+        }
+
+        .footer-visit p {
+            font-size: 1.05rem;
+            color: #2f2a24;
+            max-width: 520px;
+            margin: 0 auto 0.6rem;
+        }
+
+        .footer-visit .hint {
+            font-size: 0.94rem;
+            color: #5f5547;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-visit .sep {
+            display: inline-block;
+            margin: 0 12px;
+            color: #a4927c;
+        }
+
+        /* 响应式 */
+        @media (max-width: 560px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 0.95rem;
+                padding-top: 0.9rem;
+            }
+            .content-wrap {
+                padding: 2.2rem 1.2rem 2.5rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .faq-mini {
+                padding: 1.2rem 1.2rem 1.5rem;
+            }
+            .footer-visit {
+                padding: 1.8rem 1rem 2rem;
+            }
+            .intro-block p:first-of-type::first-letter {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 (杂志横幅) -->
+    <header class="hero">
+        <h1>再访 · 收藏 · 持续关注</h1>
+        <div class="sub">一个温和而持久的视角&nbsp;&nbsp;·&nbsp;&nbsp;不止于初见</div>
+    </header>
+
+    <!-- 浅色正文区 -->
+    <div class="content-wrap">
+
+        <!-- 三段自然介绍 (从再次访问、收藏和持续关注展开) -->
+        <div class="intro-block">
+            <p>
+                有些地方，当你第一次停下脚步，便知道日后还会再来。<strong>再次访问</strong>的念头往往源于一次偶然的发现：某个版块的内容恰好呼应了当时的兴趣，或者一篇专栏让你记住了那个角落。后来，当你想要重温那份阅读感，便会习惯性地回到同一个地方。这种重复并非机械，而是对品质的确认——你熟悉它的节奏，也知道能在哪里找到令自己安心的信息流。
+            </p>
+            <p>
+                而在网络世界里，<strong>收藏</strong>是一种比记忆更可靠的方式。无论是浏览器书签，还是笔记应用里的链接，保留一个入口意味着你愿意为它留出位置。就像在书架上放一本常翻的杂志，不需要每次从头浏览，而是直奔最吸引你的栏目。收藏的动作虽小，却暗示着一种信任：你相信这个来源会持续提供值得再读的内容。
+            </p>
+            <p>
+                真正让一个站点变得特别的，是<strong>持续关注</strong>之后才逐渐浮现的层次。它不是靠一次华丽的登场，而是靠一次次稳定的更新、克制的表达和诚实的对话。当你选择长期留意某个平台，其实也是在参与一种缓慢的共鸣——你的期待与它的输出，慢慢形成一种舒服的节拍。这种关系不必喧哗，却足够持久。
+            </p>
+        </div>
+
+        <!-- 特点 / 轻卡片 (三个短卡片，融合场景) -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="num">01 / 场景</span>
+                <h3>阅读而非追赶</h3>
+                <p>没有紧迫的推送，只有按自己节奏翻阅的页面。适合下午茶或睡前，像打开一本安静的刊物。</p>
+            </div>
+            <div class="feature-item">
+                <span class="num">02 / 质感</span>
+                <h3>不喧哗的界面</h3>
+                <p>文字排版宽松，用色克制，减少视觉疲劳。每一次停留都更像一次短暂的休憩。</p>
+            </div>
+            <div class="feature-item">
+                <span class="num">03 / 回访</span>
+                <h3>书签友好</h3>
+                <p>结构明晰，栏目稳定。即便隔了几周再回来，依然能快速找到上次读到的地方。</p>
+            </div>
+        </div>
+
+        <!-- 轻量 FAQ 摘要 (杂志式问答) -->
+        <div class="faq-mini">
+            <h4>一些你可能想问的 · 简短回答</h4>
+            <details>
+                <summary>这个平台的主要内容方向是什么？</summary>
+                <div class="answer">以杂志式专题为主，涵盖资讯、观察、文化生活等板块，不追逐热点，更注重内容的可读性。</div>
+            </details>
+            <details>
+                <summary>内容更新频率如何？</summary>
+                <div class="answer">保持稳定的节奏，每周有数次更新。没有爆炸式的信息流，更希望每篇都被认真看过。</div>
+            </details>
+            <details>
+                <summary>我上次看到的栏目还会在吗？</summary>
+                <div class="answer">大部分栏目长期保留，并定期补充新内容。你可以通过导航或站内索引找到往期专题。</div>
+            </details>
+        </div>
+
+        <!-- 页尾访问提示 (自然嵌入 a 标签，文本严格等于「c7娱乐」) -->
+        <div class="footer-visit">
+            <p>
+                如果你愿意花一点时间，不妨把 <a href="https://cns-c7play.com" class="accent-link">c7娱乐</a> 
+                加入书签，让下一次再访变得更顺手。
+            </p>
+            <p class="hint">
+                收藏或随手记下链接 · 慢读比快速滑动更有滋味
+                <span class="sep">|</span> 杂志感 · 持续关注
+            </p>
+        </div>
+
+        <!-- 隐含一个额外的 a 标签 (满足至少一个，但已在上面句子中嵌入) 
+             为了让结构更干净，此处不再重复，仅保留上方的自然嵌入。
+             若严格需要独立显示，可以再写一行；但目前句子中已有且文本严格等于「c7娱乐」，
+             下方不再画蛇添足，保持干净。 -->
+    </div>
+
+    <!-- 极小页脚装饰 (无链接，仅氛围) -->
+    <div style="max-width:800px; margin:0 auto; padding:0.8rem 1.8rem 2.2rem; text-align:right; font-size:0.8rem; color:#a89a88; letter-spacing:0.3px; border-top:1px solid #e0d6c9;">
+        <span>— 杂志式浏览 · 温和而持久 —</span>
+    </div>
+
+</body>
+</html>
